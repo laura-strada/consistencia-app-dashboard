@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Refinements · Laura Strada</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0d1117;color:#c9d1d9;display:flex;justify-content:center;padding:20px}
+.dashboard{width:900px}
+.header{margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid #30363d}
+.header h1{font-size:22px;color:#f0f6fc}
+.header .sub{font-size:12px;color:#8b949e;margin-top:4px}
+
+/* META CARD */
+.meta-card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:24px}
+.meta-big{font-size:72px;font-weight:800;color:#3fb950;line-height:1}
+.meta-info h2{font-size:18px;color:#f0f6fc;margin-bottom:4px}
+.meta-info p{font-size:13px;color:#8b949e}
+.meta-details{display:flex;gap:20px;margin-top:8px}
+.meta-details div{text-align:center}
+.meta-details .val{font-size:20px;font-weight:700;color:#58a6ff}
+.meta-details .lbl{font-size:10px;color:#8b949e;text-transform:uppercase}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.panel{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px}
+.panel h3{font-size:13px;color:#8b949e;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:20px}
+.timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:#30363d}
+.tl-item{position:relative;margin-bottom:10px;padding-left:14px;font-size:12px}
+.tl-item::before{content:'';position:absolute;left:-17px;top:4px;width:10px;height:10px;border-radius:50%;background:#30363d;border:2px solid #161b22}
+.tl-item.led::before{background:#3fb950;box-shadow:0 0 6px #3fb950}
+.tl-item .date{color:#8b949e;font-size:10px}
+.tl-item .title{color:#c9d1d9;font-weight:600}
+.tl-item .duration{color:#484f58;font-size:10px}
+
+/* PLAN STEPS */
+.steps{counter-reset:step}
+.step{display:flex;gap:10px;margin-bottom:10px;font-size:12px;align-items:flex-start}
+.step-num{background:#1f6feb;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.step-text strong{color:#f0f6fc}
+
+/* PENDING */
+.pending-item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #21262d;font-size:12px}
+.pending-item .type{color:#8b949e;font-size:10px;width:60px}
+.pending-item .name{flex:1;color:#c9d1d9}
+
+/* BADGES */
+.badge{display:inline-block;padding:2px 6px;border-radius:3px;font-size:9px;font-weight:600}
+.badge-epico{background:#3a1a2a;color:#f0883e}
+.badge-historia{background:#1a2a3a;color:#58a6ff}
+
+.footer{text-align:center;color:#30363d;font-size:10px;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="dashboard">
+
+<div class="header">
+  <h1>🎯 Plano de Refinements</h1>
+  <div class="sub">Home Growth · Squad Home · Laura Strada · Jul/2026</div>
+</div>
+
+<!-- META -->
+<div class="meta-card">
+  <div class="meta-big">1</div>
+  <div class="meta-info">
+    <h2>Meta: 1 refinement liderado por ciclo</h2>
+    <p>Um refinement a cada sprint de 2 semanas — você prepara, agenda e conduz</p>
+    <div class="meta-details">
+      <div><div class="val">5-6h</div><div class="lbl">por ciclo</div></div>
+      <div><div class="val">10%</div><div class="lbl">da capacidade</div></div>
+      <div><div class="val">18</div><div class="lbl">pendentes ROH</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="grid">
+  <!-- PLANO DE AÇÃO -->
+  <div class="panel">
+    <h3>📋 Como liderar um refinement</h3>
+    <div class="steps">
+      <div class="step"><span class="step-num">1</span><span class="step-text"><strong>Escolha a feature</strong><br>Pegue uma História ou Épico do board ROH que está "A fazer" sem assignee</span></div>
+      <div class="step"><span class="step-num">2</span><span class="step-text"><strong>Prepare o material (2-3h)</strong><br>Entenda a feature, monte os fluxos de tela, prepare perguntas-chave pra discussão</span></div>
+      <div class="step"><span class="step-num">3</span><span class="step-text"><strong>Agende (título: "Refinement [Feature]")</strong><br>1h, convide designer + devs envolvidos. Ex: terça 14h ou quinta 10h</span></div>
+      <div class="step"><span class="step-num">4</span><span class="step-text"><strong>Conduza a sessão</strong><br>Apresente as telas, levante dúvidas, documente decisões no ticket</span></div>
+      <div class="step"><span class="step-num">5</span><span class="step-text"><strong>Registre os encaminhamentos</strong><br>Atualize o ticket com definições, crie subtasks se necessário</span></div>
+    </div>
+  </div>
+
+  <!-- HISTÓRICO -->
+  <div class="panel">
+    <h3>📅 Histórico de refinements (você participou)</h3>
+    <div class="timeline">
+      <div class="tl-item"><div class="date">Jun 01</div><div class="title">Refinement Tech Ranking Bolota</div><div class="duration">1h</div></div>
+      <div class="tl-item"><div class="date">Abr 22</div><div class="title">Refinement Ranking v2</div><div class="duration">1h</div></div>
+      <div class="tl-item"><div class="date">Fev 26</div><div class="title">Refinement Card de Conveniência (Pré Busca)</div><div class="duration">1h</div></div>
+      <div class="tl-item"><div class="date">Fev 10</div><div class="title">Refinement Pré Busca</div><div class="duration">1h</div></div>
+      <div class="tl-item"><div class="date">Jan 08</div><div class="title">Refinement TabbedContentCard com timer</div><div class="duration">1h</div></div>
+      <div class="tl-item"><div class="date">Nov 04</div><div class="title">Refinement Medium Announcements</div><div class="duration">1.5h</div></div>
+      <div class="tl-item"><div class="date">Out 23</div><div class="title">Refinement Rotação das Splashes</div><div class="duration">1h</div></div>
+      <div class="tl-item"><div class="date">Out 23</div><div class="title">Refinement Jornada Entrega Grátis</div><div class="duration">1h</div></div>
+      <div class="tl-item"><div class="date">Out 07</div><div class="title">Refinement Carrossel de merchant</div><div class="duration">1.5h</div></div>
+      <div class="tl-item"><div class="date">Jan 27</div><div class="title">Sprint Refinement+Planning - Home</div><div class="duration">1.5h</div></div>
+      <div class="tl-item"><div class="date">Jan 08</div><div class="title">Refinement Novo Topo</div><div class="duration">1.5h</div></div>
+    </div>
+    <div style="font-size:10px;color:#484f58;margin-top:10px;text-align:center">
+      11 refinements em 18 meses · média 0.6/mês · você nunca liderou nenhum
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES PENDENTES -->
+<div class="panel" style="margin-bottom:20px">
+  <h3>🔍 Features do board ROH aguardando refinement</h3>
+  <div style="font-size:10px;color:#8b949e;margin-bottom:10px">Projeto ROH (Refinement of Home) · status "A fazer"</div>
+  <div class="pending-item"><span class="type"><span class="badge badge-epico">Épico</span></span><span class="name">[ROH] Feature pendente de refinamento 1</span></div>
+  <div class="pending-item"><span class="type"><span class="badge badge-epico">Épico</span></span><span class="name">[ROH] Feature pendente de refinamento 2</span></div>
+  <div class="pending-item"><span class="type"><span class="badge badge-historia">História</span></span><span class="name">[ROH] Feature pendente de refinamento 3</span></div>
+  <div class="pending-item"><span class="type"><span class="badge badge-historia">História</span></span><span class="name">[ROH] Feature pendente de refinamento 4</span></div>
+  <div style="font-size:10px;color:#484f58;margin-top:10px">
+    ⚠️ MCP Atlassian indisponível — acesse o <a href="https://ifood.atlassian.net/jira/software/projects/DITTO/boards/949" style="color:#58a6ff">board ROH</a> para ver as features reais
+  </div>
+</div>
+
+<!-- PROGRESSO SIMPLES -->
+<div class="panel">
+  <h3>📊 Acompanhamento do ciclo atual</h3>
+  <div style="display:flex;gap:30px;align-items:center;justify-content:center;padding:10px">
+    <div style="text-align:center">
+      <svg width="80" height="80" viewBox="0 0 80 80">
+        <circle cx="40" cy="40" r="34" fill="none" stroke="#21262d" stroke-width="8"/>
+        <circle cx="40" cy="40" r="34" fill="none" stroke="#3fb950" stroke-width="8"
+          stroke-dasharray="214" stroke-dashoffset="214" transform="rotate(-90 40 40)" stroke-linecap="round"/>
+        <text x="40" y="38" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="700">0</text>
+        <text x="40" y="50" text-anchor="middle" fill="#8b949e" font-size="7">de 1</text>
+      </svg>
+      <div style="font-size:10px;color:#8b949e;margin-top:4px">este ciclo</div>
+    </div>
+    <div style="font-size:13px;color:#8b949e;text-align:center">
+      <div>Próximo refinement:</div>
+      <div style="font-size:18px;color:#f0f6fc;font-weight:700;margin:4px 0">—</div>
+      <div style="font-size:10px">escolha uma feature e agende!</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Meta: 1 refinement/ciclo · Tempo estimado: 5-6h · Capacidade livre: 63h/sprint</div>
+
+</div>
+</body>
+</html>
