@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home (Discovery) — Consistência de Layout</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #ffffff; color: #24292f;
+  display: flex; justify-content: center; padding: 20px;
+}
+.dashboard { width: 960px; background: #ffffff; }
+.header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid #d0d7de;
+}
+.header h1 { font-size: 20px; color: #1f2328; }
+.header .meta { font-size: 11px; color: #656d76; line-height: 1.5; }
+.header .meta strong { color: #1f2328; }
+.header .meta a { color: #0969da; text-decoration: none; }
+
+.big-numbers { display: flex; gap: 14px; margin-bottom: 18px; }
+.bn { flex: 1; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 14px 16px; text-align: center; }
+.bn .num { font-size: 38px; font-weight: 700; line-height: 1; }
+.bn .lbl { font-size: 11px; color: #656d76; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 4px; }
+.bn.total .num { color: #0969da; }
+.bn.done .num { color: #1a7f37; }
+.bn.cr .num { color: #8250df; }
+.bn.rft .num { color: #bf8700; }
+.bn.todo .num { color: #656d76; }
+
+.main-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.panel {
+  background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 14px;
+}
+.panel h2 { font-size: 12px; color: #656d76; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+
+.donut-wrap { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.donut-legend { font-size: 11px; }
+.donut-legend div { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+.donut-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+.bars { font-size: 11px; }
+.bar-row { display: flex; align-items: center; margin-bottom: 7px; }
+.bar-label { width: 85px; flex-shrink: 0; color: #656d76; }
+.bar-track { flex: 1; background: #eaeef2; border-radius: 3px; height: 12px; margin: 0 8px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 3px; }
+.bar-num { width: 24px; text-align: right; color: #24292f; font-weight: 600; font-size: 11px; }
+
+.ring-wrap { display: flex; align-items: center; justify-content: center; gap: 20px; }
+.ring-info { font-size: 11px; color: #656d76; }
+.ring-info .big { font-size: 28px; font-weight: 700; color: #1a7f37; }
+
+.tbl { font-size: 10px; margin-top: 4px; width: 100%; }
+.tbl td { padding: 3px 4px; border-bottom: 1px solid #d0d7de; vertical-align: middle; }
+.tbl .key { color: #0969da; font-weight: 600; white-space: nowrap; }
+.pill {
+  display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 9px; font-weight: 600;
+}
+.pill-cr { background: #fbefff; color: #8250df; }
+.pill-rft { background: #fff8c5; color: #9a6700; }
+.pill-done { background: #dafbe1; color: #1a7f37; }
+.pill-todo { background: #eaeef2; color: #656d76; }
+
+.footer { text-align: center; color: #d0d7de; font-size: 9px; margin-top: 16px; }
+</style>
+</head>
+<body>
+<div class="dashboard">
+
+<div class="header">
+  <div>
+    <h1>📐 Consistência de Layout — Home (Discovery)</h1>
+    <div class="meta">
+      Board <strong>Home (Discovery)</strong> · Tickets de <strong>Jaqueline Antunes</strong> · 24/07/2026<br>
+      <a href="https://ifood.atlassian.net/jira/software/c/projects/SWCONAP/boards/4609">ifood.atlassian.net · Board 4609</a>
+    </div>
+  </div>
+</div>
+
+<div class="big-numbers">
+  <div class="bn total"><div class="num">11</div><div class="lbl">Total</div></div>
+  <div class="bn cr"><div class="num">6</div><div class="lbl">Code Review</div></div>
+  <div class="bn rft"><div class="num">1</div><div class="lbl">Ready for Test</div></div>
+  <div class="bn done"><div class="num">3</div><div class="lbl">Concluídos</div></div>
+  <div class="bn todo"><div class="num">1</div><div class="lbl">A fazer</div></div>
+</div>
+
+<div class="main-grid">
+
+  <!-- DONUT -->
+  <div class="panel">
+    <h2>Por Status</h2>
+    <div class="donut-wrap">
+      <svg width="110" height="110" viewBox="0 0 110 110">
+        <circle cx="55" cy="55" r="45" fill="none" stroke="#eaeef2" stroke-width="14"/>
+        <circle cx="55" cy="55" r="45" fill="none" stroke="#656d76" stroke-width="14"
+          stroke-dasharray="283" stroke-dashoffset="257" transform="rotate(-90 55 55)" stroke-linecap="butt"/>
+        <circle cx="55" cy="55" r="45" fill="none" stroke="#bf8700" stroke-width="14"
+          stroke-dasharray="283" stroke-dashoffset="232" transform="rotate(-90 55 55)" stroke-linecap="butt"/>
+        <circle cx="55" cy="55" r="45" fill="none" stroke="#1a7f37" stroke-width="14"
+          stroke-dasharray="283" stroke-dashoffset="154" transform="rotate(-90 55 55)" stroke-linecap="butt"/>
+        <circle cx="55" cy="55" r="45" fill="none" stroke="#8250df" stroke-width="14"
+          stroke-dasharray="283" stroke-dashoffset="0" transform="rotate(-90 55 55)" stroke-linecap="butt"/>
+        <text x="55" y="52" text-anchor="middle" fill="#1f2328" font-size="20" font-weight="700">11</text>
+        <text x="55" y="66" text-anchor="middle" fill="#656d76" font-size="9">tickets</text>
+      </svg>
+      <div class="donut-legend">
+        <div><span class="donut-dot" style="background:#8250df"></span> Code Review <strong>6</strong></div>
+        <div><span class="donut-dot" style="background:#1a7f37"></span> Concluído <strong>3</strong></div>
+        <div><span class="donut-dot" style="background:#bf8700"></span> Ready for Test <strong>1</strong></div>
+        <div><span class="donut-dot" style="background:#656d76"></span> A fazer <strong>1</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIORIDADE + PLATAFORMA -->
+  <div class="panel">
+    <h2>Por Prioridade</h2>
+    <div class="bars">
+      <div class="bar-row">
+        <span class="bar-label">Crítica</span>
+        <div class="bar-track"><div class="bar-fill" style="width:20%;background:#cf222e"></div></div>
+        <span class="bar-num">1</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">High</span>
+        <div class="bar-track"><div class="bar-fill" style="width:80%;background:#d8762b"></div></div>
+        <span class="bar-num">4</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Medium</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:#bf8700"></div></div>
+        <span class="bar-num">5</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Low</span>
+        <div class="bar-track"><div class="bar-fill" style="width:20%;background:#656d76"></div></div>
+        <span class="bar-num">1</span>
+      </div>
+    </div>
+    <div style="margin-top:14px">
+      <h2 style="margin-bottom:8px">Por Plataforma</h2>
+      <div class="bars">
+        <div class="bar-row">
+          <span class="bar-label">Android</span>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#1a7f37"></div></div>
+          <span class="bar-num">10</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">iOS</span>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#0969da"></div></div>
+          <span class="bar-num">10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESSO -->
+  <div class="panel">
+    <h2>Progresso</h2>
+    <div class="ring-wrap">
+      <svg width="90" height="90" viewBox="0 0 90 90">
+        <circle cx="45" cy="45" r="38" fill="none" stroke="#eaeef2" stroke-width="10"/>
+        <circle cx="45" cy="45" r="38" fill="none" stroke="#1a7f37" stroke-width="10"
+          stroke-dasharray="239" stroke-dashoffset="174" transform="rotate(-90 45 45)" stroke-linecap="round"/>
+        <text x="45" y="43" text-anchor="middle" fill="#1a7f37" font-size="22" font-weight="700">27%</text>
+        <text x="45" y="56" text-anchor="middle" fill="#656d76" font-size="8">concluído</text>
+      </svg>
+      <div class="ring-info">
+        <div class="big">3/11</div>
+        <div>tickets done</div>
+        <div style="margin-top:6px;font-size:10px;color:#656d76">6 Code Review<br>1 Ready for Test<br>1 To Do</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TICKETS -->
+<div class="panel" style="margin-top:14px">
+  <h2>Tickets</h2>
+  <table class="tbl">
+    <tr style="color:#656d76"><td>Ticket</td><td>Resumo</td><td>Área</td><td>Status</td><td>Prio</td></tr>
+    <tr><td class="key">SWCONAP-4016</td><td>Espaçamento penúltimo componente + Tag turbo</td><td>Home</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#bf8700">Med</td></tr>
+    <tr><td class="key">SWCONAP-4137</td><td>Título componente itens tamanho errado</td><td>Sub Home/Food</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#bf8700">Med</td></tr>
+    <tr><td class="key">SWCONAP-4138</td><td>Espaçamento do banner errado</td><td>Sub Home/Food</td><td><span class="pill pill-done">Concluído</span></td><td style="color:#bf8700">Med</td></tr>
+    <tr><td class="key">SWCONAP-4139</td><td>Espaçamento small banner maior</td><td>Sub Home/Food</td><td><span class="pill pill-done">Concluído</span></td><td style="color:#d8762b">High</td></tr>
+    <tr><td class="key">SWCONAP-4140</td><td>Título últimas lojas tamanho errado</td><td>Sub Home/Food</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#bf8700">Med</td></tr>
+    <tr><td class="key">SWCONAP-4141</td><td>Título melhores lojas tamanho errado</td><td>Sub Home/Food</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#bf8700">Med</td></tr>
+    <tr><td class="key">SWCONAP-4157</td><td>Últimas lojas título inconsistente</td><td>Home Pós Pedido</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#cf222e">Crít</td></tr>
+    <tr><td class="key">SWCONAP-4188</td><td>Espaçamento entre hits e farma</td><td>Home</td><td><span class="pill pill-rft">Ready for Testing</span></td><td style="color:#d8762b">High</td></tr>
+    <tr><td class="key">SWCONAP-4189</td><td>Espaçamento entre hits e farma</td><td>Home</td><td><span class="pill pill-done">Concluído</span></td><td style="color:#d8762b">High</td></tr>
+    <tr><td class="key">SWCONAP-4191</td><td>Últimas lojas título inconsistente</td><td>Home Pós Pedido</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#d8762b">High</td></tr>
+    <tr><td class="key">SWCONAP-4208</td><td>Tabbed Ranking — Falta borda logo</td><td>Home</td><td><span class="pill pill-todo">A fazer</span></td><td style="color:#656d76">Low</td></tr>
+  </table>
+</div>
+
+<div class="footer">SWCONAP · Board Home (Discovery) 4609 · team=Home · criados por Jaqueline Antunes</div>
+
+</div>
+</body>
+</html>
