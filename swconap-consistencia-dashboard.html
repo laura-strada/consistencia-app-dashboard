@@ -26,10 +26,11 @@ body {
 .bn .num { font-size: 38px; font-weight: 700; line-height: 1; }
 .bn .lbl { font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 4px; }
 .bn.total .num { color: #58a6ff; }
-.bn.done .num { color: #3fb950; }
 .bn.cr .num { color: #a371f7; }
 .bn.rft .num { color: #d2991d; }
-.bn.todo .num { color: #6e7681; }
+.bn.done .num { color: #3fb950; }
+.bn.ip .num { color: #39c5cf; }
+.bn.cancelled .num { color: #6e7681; }
 
 .main-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
 .panel {
@@ -59,10 +60,12 @@ body {
 .pill {
   display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 9px; font-weight: 600;
 }
+
 .pill-cr { background: #2a1a3a; color: #a371f7; }
 .pill-rft { background: #3a2a1a; color: #d2991d; }
 .pill-done { background: #1a3a2a; color: #3fb950; }
-.pill-todo { background: #1c2128; color: #8b949e; }
+.pill-ip { background: #16363b; color: #39c5cf; }
+.pill-cancelled { background: #1c2128; color: #8b949e; }
 
 .footer { text-align: center; color: #30363d; font-size: 9px; margin-top: 16px; }
 </style>
@@ -74,7 +77,7 @@ body {
   <div>
     <h1>📐 Consistência de Layout — Home (Discovery)</h1>
     <div class="meta">
-      Board <strong>Home (Discovery)</strong> · Tickets de <strong>Jaqueline Antunes</strong> · 24/07/2026<br>
+      Board <strong>Home (Discovery)</strong> · Tickets de <strong>Jaqueline Antunes</strong> · 13/08/2026<br>
       <a href="https://ifood.atlassian.net/jira/software/c/projects/SWCONAP/boards/4609">ifood.atlassian.net · Board 4609</a>
     </div>
   </div>
@@ -82,10 +85,11 @@ body {
 
 <div class="big-numbers">
   <div class="bn total"><div class="num">11</div><div class="lbl">Total</div></div>
-  <div class="bn cr"><div class="num">6</div><div class="lbl">Code Review</div></div>
+  <div class="bn cr"><div class="num">1</div><div class="lbl">Code Review</div></div>
   <div class="bn rft"><div class="num">1</div><div class="lbl">Ready for Test</div></div>
   <div class="bn done"><div class="num">3</div><div class="lbl">Concluídos</div></div>
-  <div class="bn todo"><div class="num">1</div><div class="lbl">A fazer</div></div>
+  <div class="bn ip"><div class="num">1</div><div class="lbl">Em Progresso</div></div>
+  <div class="bn cancelled"><div class="num">5</div><div class="lbl">Cancelados</div></div>
 </div>
 
 <div class="main-grid">
@@ -96,22 +100,25 @@ body {
     <div class="donut-wrap">
       <svg width="110" height="110" viewBox="0 0 110 110">
         <circle cx="55" cy="55" r="45" fill="none" stroke="#21262d" stroke-width="14"/>
-        <circle cx="55" cy="55" r="45" fill="none" stroke="#6e7681" stroke-width="14"
+        <circle cx="55" cy="55" r="45" fill="none" stroke="#a371f7" stroke-width="14"
           stroke-dasharray="283" stroke-dashoffset="257" transform="rotate(-90 55 55)" stroke-linecap="butt"/>
         <circle cx="55" cy="55" r="45" fill="none" stroke="#d2991d" stroke-width="14"
           stroke-dasharray="283" stroke-dashoffset="232" transform="rotate(-90 55 55)" stroke-linecap="butt"/>
+        <circle cx="55" cy="55" r="45" fill="none" stroke="#39c5cf" stroke-width="14"
+          stroke-dasharray="283" stroke-dashoffset="206" transform="rotate(-90 55 55)" stroke-linecap="butt"/>
         <circle cx="55" cy="55" r="45" fill="none" stroke="#3fb950" stroke-width="14"
-          stroke-dasharray="283" stroke-dashoffset="154" transform="rotate(-90 55 55)" stroke-linecap="butt"/>
-        <circle cx="55" cy="55" r="45" fill="none" stroke="#a371f7" stroke-width="14"
+          stroke-dasharray="283" stroke-dashoffset="129" transform="rotate(-90 55 55)" stroke-linecap="butt"/>
+        <circle cx="55" cy="55" r="45" fill="none" stroke="#6e7681" stroke-width="14"
           stroke-dasharray="283" stroke-dashoffset="0" transform="rotate(-90 55 55)" stroke-linecap="butt"/>
         <text x="55" y="52" text-anchor="middle" fill="#f0f6fc" font-size="20" font-weight="700">11</text>
         <text x="55" y="66" text-anchor="middle" fill="#8b949e" font-size="9">tickets</text>
       </svg>
       <div class="donut-legend">
-        <div><span class="donut-dot" style="background:#a371f7"></span> Code Review <strong>6</strong></div>
+        <div><span class="donut-dot" style="background:#6e7681"></span> Cancelados <strong>5</strong></div>
         <div><span class="donut-dot" style="background:#3fb950"></span> Concluído <strong>3</strong></div>
+        <div><span class="donut-dot" style="background:#a371f7"></span> Code Review <strong>1</strong></div>
         <div><span class="donut-dot" style="background:#d2991d"></span> Ready for Test <strong>1</strong></div>
-        <div><span class="donut-dot" style="background:#6e7681"></span> A fazer <strong>1</strong></div>
+        <div><span class="donut-dot" style="background:#39c5cf"></span> Em Progresso <strong>1</strong></div>
       </div>
     </div>
   </div>
@@ -122,23 +129,23 @@ body {
     <div class="bars">
       <div class="bar-row">
         <span class="bar-label">Crítica</span>
-        <div class="bar-track"><div class="bar-fill" style="width:20%;background:#f85149"></div></div>
-        <span class="bar-num">1</span>
+        <div class="bar-track"><div class="bar-fill" style="width:0%;background:#f85149"></div></div>
+        <span class="bar-num">0</span>
       </div>
       <div class="bar-row">
         <span class="bar-label">High</span>
-        <div class="bar-track"><div class="bar-fill" style="width:80%;background:#f0883e"></div></div>
-        <span class="bar-num">4</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:#f0883e"></div></div>
+        <span class="bar-num">6</span>
       </div>
       <div class="bar-row">
         <span class="bar-label">Medium</span>
-        <div class="bar-track"><div class="bar-fill" style="width:100%;background:#d2991d"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:83%;background:#d2991d"></div></div>
         <span class="bar-num">5</span>
       </div>
       <div class="bar-row">
         <span class="bar-label">Low</span>
-        <div class="bar-track"><div class="bar-fill" style="width:20%;background:#6e7681"></div></div>
-        <span class="bar-num">1</span>
+        <div class="bar-track"><div class="bar-fill" style="width:0%;background:#6e7681"></div></div>
+        <span class="bar-num">0</span>
       </div>
     </div>
     <div style="margin-top:14px">
@@ -172,7 +179,7 @@ body {
       <div class="ring-info">
         <div class="big">3/11</div>
         <div>tickets done</div>
-        <div style="margin-top:6px;font-size:10px;color:#484f58">6 Code Review<br>1 Ready for Test<br>1 To Do</div>
+        <div style="margin-top:6px;font-size:10px;color:#484f58">1 Code Review<br>1 Ready for Test<br>1 Em Progresso<br>5 Cancelados</div>
       </div>
     </div>
   </div>
@@ -185,16 +192,16 @@ body {
   <table class="tbl">
     <tr style="color:#484f58"><td>Ticket</td><td>Resumo</td><td>Área</td><td>Status</td><td>Prio</td></tr>
     <tr><td class="key">SWCONAP-4016</td><td>Espaçamento penúltimo componente + Tag turbo</td><td>Home</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#d2991d">Med</td></tr>
-    <tr><td class="key">SWCONAP-4137</td><td>Título componente itens tamanho errado</td><td>Sub Home/Food</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#d2991d">Med</td></tr>
+    <tr><td class="key">SWCONAP-4137</td><td>Título componente de itens com tamanho errado</td><td>Sub Home/Food</td><td><span class="pill pill-cancelled">Cancelled</span></td><td style="color:#d2991d">Med</td></tr>
     <tr><td class="key">SWCONAP-4138</td><td>Espaçamento do banner errado</td><td>Sub Home/Food</td><td><span class="pill pill-done">Concluído</span></td><td style="color:#d2991d">Med</td></tr>
-    <tr><td class="key">SWCONAP-4139</td><td>Espaçamento small banner maior</td><td>Sub Home/Food</td><td><span class="pill pill-done">Concluído</span></td><td style="color:#f0883e">High</td></tr>
-    <tr><td class="key">SWCONAP-4140</td><td>Título últimas lojas tamanho errado</td><td>Sub Home/Food</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#d2991d">Med</td></tr>
-    <tr><td class="key">SWCONAP-4141</td><td>Título melhores lojas tamanho errado</td><td>Sub Home/Food</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#d2991d">Med</td></tr>
-    <tr><td class="key">SWCONAP-4157</td><td>Últimas lojas título inconsistente</td><td>Home Pós Pedido</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#f85149">Crít</td></tr>
-    <tr><td class="key">SWCONAP-4188</td><td>Espaçamento entre hits e farma</td><td>Home</td><td><span class="pill pill-rft">Ready for Testing</span></td><td style="color:#f0883e">High</td></tr>
-    <tr><td class="key">SWCONAP-4189</td><td>Espaçamento entre hits e farma</td><td>Home</td><td><span class="pill pill-done">Concluído</span></td><td style="color:#f0883e">High</td></tr>
-    <tr><td class="key">SWCONAP-4191</td><td>Últimas lojas título inconsistente</td><td>Home Pós Pedido</td><td><span class="pill pill-cr">Code Review</span></td><td style="color:#f0883e">High</td></tr>
-    <tr><td class="key">SWCONAP-4208</td><td>Tabbed Ranking — Falta borda logo</td><td>Home</td><td><span class="pill pill-todo">A fazer</span></td><td style="color:#6e7681">Low</td></tr>
+    <tr><td class="key">SWCONAP-4139</td><td>Espaçamento small banner maior que o esperado</td><td>Sub Home/Food</td><td><span class="pill pill-done">Concluído</span></td><td style="color:#f0883e">High</td></tr>
+    <tr><td class="key">SWCONAP-4140</td><td>Título últimas lojas com tamanho errado</td><td>Sub Home/Food</td><td><span class="pill pill-cancelled">Cancelled</span></td><td style="color:#d2991d">Med</td></tr>
+    <tr><td class="key">SWCONAP-4141</td><td>Título melhores lojas com tamanho errado</td><td>Sub Home/Food</td><td><span class="pill pill-cancelled">Cancelled</span></td><td style="color:#d2991d">Med</td></tr>
+    <tr><td class="key">SWCONAP-4157</td><td>Últimas lojas com título inconsistente</td><td>Home Pós Pedido</td><td><span class="pill pill-cancelled">Cancelled</span></td><td style="color:#f0883e">High</td></tr>
+    <tr><td class="key">SWCONAP-4188</td><td>Espaçamento entre componente de hits e farma</td><td>Home</td><td><span class="pill pill-rft">Ready for Testing</span></td><td style="color:#f0883e">High</td></tr>
+    <tr><td class="key">SWCONAP-4189</td><td>Espaçamento entre componente de hits e farma</td><td>Home</td><td><span class="pill pill-done">Concluído</span></td><td style="color:#f0883e">High</td></tr>
+    <tr><td class="key">SWCONAP-4191</td><td>Últimas lojas com título inconsistente</td><td>Home Pós Pedido</td><td><span class="pill pill-cancelled">Cancelled</span></td><td style="color:#f0883e">High</td></tr>
+    <tr><td class="key">SWCONAP-4208</td><td>Tabbed Ranking Carousel — Falta borda logo</td><td>Home</td><td><span class="pill pill-ip">Em Progresso</span></td><td style="color:#f0883e">High</td></tr>
   </table>
 </div>
 
